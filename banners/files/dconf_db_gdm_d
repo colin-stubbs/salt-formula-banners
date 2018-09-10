@@ -1,0 +1,10 @@
+# {{ filename }}
+
+{% for section_name, section_config in config.items() -%}
+[{{ section_name }}]
+{% for key, value in section_config.items() -%}
+{{ key }}={{ value }}
+{% endfor -%}
+{%- endfor %}
+
+# EOF

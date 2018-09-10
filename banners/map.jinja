@@ -1,0 +1,28 @@
+{% import_yaml 'banners/defaults.yaml' as default_settings %}
+
+{% set kernel_map = salt['grains.filter_by']({
+  'default': {
+    'packages': {
+      'gdm': 'gdm'
+    },
+    'locations': {
+      'motd': '/etc/motd',
+      'issue': '/etc/issue',
+      'issue_net': '/etc/issue.net',
+      'gdm': {
+        'dconf_profile_gdm': '/etc/dconf/profile/gdm',
+        'dconf_db_gdm_d': '/etc/dconf/db/gdm.d/01-banner-message'
+      }
+    },
+  },
+}, grain='banners', default='default', merge=salt['pillar.get']('banners:lookup', {}))
+%}
+
+{% do default_settings.banners.lookup.update(kernel_map) %}
+
+{% set banner_settings = salt['pillar.get'](
+    'banners',
+    default=default_settings.banners,
+    merge=True
+  )
+%}

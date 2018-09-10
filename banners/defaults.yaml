@@ -1,0 +1,14 @@
+banners:
+  lookup: {}
+  motd: ""
+  issue: "Authorized uses only. All activity may be monitored and reported."
+  issue_net: "Authorized uses only. All activity may be monitored and reported."
+  gdm:
+    profile:
+      "user-db": user
+      "system-db": gdm
+      "file-db": /usr/share/gdm/greeter-dconf-defaults
+    banner:
+      "org/gnome/login-screen":
+        banner-message-enable: true
+        banner-message-text: 'Authorized uses only. All activity may be monitored and reported.'
