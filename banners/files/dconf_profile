@@ -1,5 +1,6 @@
 # {{ filename }}
 
-{% for key, value in config.items() %}{{ key }}:{{ value }}{% endfor %}
-
+{% for key, value in config.items() -%}
+{{ key }}:{{ value }}
+{% endfor %}
 # EOF
